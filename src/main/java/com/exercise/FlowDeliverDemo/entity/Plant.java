@@ -1,11 +1,11 @@
 package com.exercise.FlowDeliverDemo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
 
 @Entity
 @Table(name = "plant")
@@ -23,6 +23,7 @@ public class Plant {
     @Column(precision = 12, scale = 4)
     private BigDecimal price;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;

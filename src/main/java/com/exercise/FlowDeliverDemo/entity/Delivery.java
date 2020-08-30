@@ -1,11 +1,18 @@
 package com.exercise.FlowDeliverDemo.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Nationalized;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+
+@NamedQuery(
+        name = "Delivery.findByName",
+        query = "select d from Delivery d where d.name = :name"
+)
+
 
 @Entity
 @Table(name = "delivery")
@@ -28,9 +35,11 @@ public class Delivery {
     //make sure to specify mappedBy. Lazy fetch optional,
     //  but often a good idea for collection attributes
     // added CascadeType.REMOVE to automatically clear any associated plants when removed
+    @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "delivery", cascade = CascadeType.ALL)
     private List<Plant> plants;
 
+    public Delivery(){}
     public Delivery(Long id, String name, String address, LocalDateTime deliveryTime, Boolean completed, List<Plant> plants) {
         this.id = id;
         this.name = name;

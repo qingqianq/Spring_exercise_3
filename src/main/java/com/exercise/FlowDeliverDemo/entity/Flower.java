@@ -3,7 +3,6 @@ package com.exercise.FlowDeliverDemo.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
 
 @Entity
 @Table(name = "flower")
