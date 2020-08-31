@@ -12,6 +12,7 @@ import java.util.List;
 @Repository
 @Transactional
 public interface PlantRepository extends JpaRepository<Plant, Long> {
+
     Boolean existsPlantByIdAndDeliveryCompleted(Long id, Boolean delivered);
 
     @Query("select p.delivery.completed from Plant p where p.id = :plantId")

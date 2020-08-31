@@ -30,7 +30,7 @@ public class Delivery {
     private LocalDateTime deliveryTime;
 
     @Type(type = "yes_no")
-    private Boolean completed;
+    private Boolean completed = false;
 
     //make sure to specify mappedBy. Lazy fetch optional,
     //  but often a good idea for collection attributes
@@ -47,6 +47,12 @@ public class Delivery {
         this.deliveryTime = deliveryTime;
         this.completed = completed;
         this.plants = plants;
+    }
+
+    public Delivery(String name, String address, LocalDateTime deliveryTime) {
+            this.address = address;
+            this.name = name;
+            this.deliveryTime = deliveryTime;
     }
 
     public Long getId() {

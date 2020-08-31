@@ -30,6 +30,11 @@ public class Plant {
 
     public Plant(){}
 
+    public Plant(String name, BigDecimal price) {
+        this.name = name;
+        this.price = price;
+    }
+
     public Plant(Long id, String name, BigDecimal price, Delivery delivery) {
         this.id = id;
         this.name = name;
